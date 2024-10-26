@@ -64,8 +64,12 @@ This ensures that the environment is set up automatically with all required pack
 
 ## Usage
 
+1. Clone the repository:
+
 git clone https://github.com/moondancerrr/SingleCell-Pipeline.git
 cd SingleCell-Pipeline
+
+2. Run the workflow
 snakemake --cores <number_of_cores>
 
 ## Output
