@@ -23,7 +23,7 @@ This project provides a Snakemake workflow for performing quality control includ
 You can install these packages with:
 ```bash
 pip install scanpy seaborn matplotlib scipy anndata2ri rpy2 python-igraph leidenalg
-
+```
 
 ### Adding Package Installation to Snakemake Workflow
 
@@ -69,6 +69,7 @@ cd SingleCell-Pipeline
 snakemake --cores <number_of_cores>
 
 ## Output
+
 The workflow generates:
 
 s4d8_quality_control.h5ad: Processed AnnData file with quality control and doublet detection results.
