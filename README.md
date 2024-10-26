@@ -62,3 +62,14 @@ If you want to ensure that these packages are installed within the Snakemake wor
 
 This ensures that the environment is set up automatically with all required packages when running the Snakemake workflow.
 
+## Usage
+
+git clone https://github.com/moondancerrr/SingleCell-Pipeline.git
+cd SingleCell-Pipeline
+snakemake --cores <number_of_cores>
+
+## Output
+The workflow generates:
+
+s4d8_quality_control.h5ad: Processed AnnData file with quality control and doublet detection results.
+figures/: Directory containing .png files illustrating quality control metrics before and after filtering.
