@@ -1,6 +1,6 @@
-# Quality Control and Doublet Detection for Single-Cell Data
+# Quality Control and Doublet Detection for Single-Cell Data, Normalization, and Feature Selection for Single-Cell Data
 
-This project provides a Snakemake workflow for performing quality control including filtering low quality cells, correction of ambient RNA, and doublet detection on single-cell RNA sequencing data. The workflow utilizes Python, R, and several bioinformatics tools to preprocess and clean single-cell data, leveraging [SoupX](https://github.com/constantAmateur/SoupX) and [scDblFinder](https://github.com/plger/scDblFinder) for contamination correction and doublet detection.
+This project provides a Snakemake workflow for performing quality control, normalization, and feature selection on single-cell RNA sequencing data. The workflow includes steps for filtering low-quality cells, correcting ambient RNA contamination, detecting doublets, normalizing data, and selecting highly variable features. It leverages Python, R, and several bioinformatics tools, including [SoupX](https://github.com/constantAmateur/SoupX) and [scDblFinder](https://github.com/plger/scDblFinder) for contamination correction and doublet detection.
 
 ## Requirements
 
@@ -51,6 +51,7 @@ If you want to ensure that these packages are installed within the Snakemake wor
       - bioconductor-scater
       - bioconductor-scdbfinder
       - bioconductor-soupx
+      - bioconductor-scry
     ```
 
 2. **Activate the Conda environment in Snakemake** by adding this line to your `Snakefile`:
@@ -77,5 +78,11 @@ This ensures that the environment is set up automatically with all required pack
 
 The workflow generates:
 
-s4d8_quality_control.h5ad: Processed AnnData file with quality control and doublet detection results.
-figures/: Directory containing .png files illustrating quality control metrics before and after filtering.
+- s4d8_quality_control.h5ad: Processed AnnData file with quality control and doublet detection results.
+- s4d8_normalization.h5ad: AnnData file after applying normalization methods.
+- s4d8_feature_selection.h5ad: AnnData file after feature selection with highly deviant genes.
+- figures/: Directory containing .png files that visualize key steps of the analysis:
+- total_counts_log1p_norm.png: Histogram of total counts and shifted log1p normalization.- 
+- scran_normalization.png: Histogram of log1p with Scran estimated size factors.
+- analytic_pearson_residuals.png: Histogram of analytic Pearson residuals.
+- dispersion_vs_mean_highly_deviant.png: Dispersion vs mean plot for highly deviant genes.
