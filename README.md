@@ -1,4 +1,4 @@
-# Quality Control and Doublet Detection for Single-Cell Data, Normalization, and Feature Selection for Single-Cell Data
+# Quality Control and Doublet Detection, Normalization, and Feature Selection for Single-Cell Data
 
 This project provides a Snakemake workflow for performing quality control, normalization, and feature selection on single-cell RNA sequencing data. The workflow includes steps for filtering low-quality cells, correcting ambient RNA contamination, detecting doublets, normalizing data, and selecting highly variable features. It leverages Python, R, and several bioinformatics tools, including [SoupX](https://github.com/constantAmateur/SoupX) and [scDblFinder](https://github.com/plger/scDblFinder) for contamination correction and doublet detection.
 
