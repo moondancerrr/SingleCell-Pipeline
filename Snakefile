@@ -1,7 +1,7 @@
-rule all:
+rule all
     input:
-        "s4d8_feature_selection.h5ad",
-        "figures/dispersion_vs_mean_highly_deviant.png"
+        "annotation_adata_out.h5ad"
+        directory("figures")
 
 # Define the URLs for the input files
 URL_FILTERED = "https://cf.10xgenomics.com/samples/cell-exp/6.0.0/Brain_Tumor_3p_LT/Brain_Tumor_3p_LT_filtered_feature_bc_matrix.h5"
@@ -61,3 +61,24 @@ rule feature_selection:
         """
         python scripts/feature_selection.py --input {input.processed_adata}
         """
+
+rule clustering:
+    input:
+        processed_adata="s4d8_feature_selection.h5ad"
+    output:
+	selected_adata="s4d8_clustered.h5ad"
+        figures="figures/leiden_clustering.png"
+    shell:
+        """
+        python scripts/clustering.py --input {input.processed_adata} --output_adata {output.selected_adata} --output_dir figures
+        """
+
+rule annotation:
+    input:
+        processed_adata="s4d8_clustered.h5ad"
+    output:
+        selected_adata="annotation_adata_out.h5ad"
+	figures_dir=directory("figures")
+    shell:
+        """
+        python scripts/annotation.py --input {input.processed_adata} --output_adata {output.selected_adata} --output_dir figures
