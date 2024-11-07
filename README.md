@@ -1,6 +1,6 @@
-# Quality Control, Doublet Detection, Normalization, and Feature Selection for Single-Cell Data
+# Quality Control, Doublet Detection, Normalization, Feature Selection for Single-Cell Data, Clustering and comprehensive cell-type annotation.
 
-This project provides a Snakemake workflow for performing quality control, normalization, and feature selection on single-cell RNA sequencing data. The workflow includes steps for filtering low-quality cells, correcting ambient RNA contamination, detecting doublets, normalizing data, and selecting highly variable features. It leverages Python, R, and several bioinformatics tools, including [SoupX](https://github.com/constantAmateur/SoupX) and [scDblFinder](https://github.com/plger/scDblFinder) for contamination correction and doublet detection.
+This project provides a Snakemake workflow for performing quality control, normalization, and feature selection on single-cell RNA sequencing data. The workflow includes steps for filtering low-quality cells, correcting ambient RNA contamination, detecting doublets, normalizing data, and selecting highly variable features. It leverages Python, R, and several bioinformatics tools, including [SoupX](https://github.com/constantAmateur/SoupX) and [scDblFinder](https://github.com/plger/scDblFinder) for contamination correction and doublet detection. It also provides comprehensive cell-type annotation through both manual and automated approaches. Automated cell-type annotation using [CellTypist].
 
 ## Requirements
 
@@ -19,10 +19,12 @@ This project provides a Snakemake workflow for performing quality control, norma
 - `rpy2`
 - `python-igraph`
 - `leidenalg`
+- `scarches`
+- `celltypist`
 
 You can install these packages with:
 ```bash
-pip install scanpy seaborn matplotlib scipy anndata2ri rpy2 python-igraph leidenalg
+pip install scanpy seaborn matplotlib scipy anndata2ri rpy2 python-igraph leidenalg scarches celltypist
 ```
 
 ### Adding Package Installation to Snakemake Workflow
@@ -39,12 +41,15 @@ If you want to ensure that these packages are installed within the Snakemake wor
       - defaults
     dependencies:
       - python=3.8
+      - boost=1.85
       - scanpy
       - seaborn
       - matplotlib
       - scipy
       - anndata2ri
       - rpy2
+      - celltypist
+      - scarches
       - python-igraph
       - leidenalg
       - r-base
