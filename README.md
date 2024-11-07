@@ -86,8 +86,7 @@ The workflow generates:
 - s4d8_quality_control.h5ad: Processed AnnData file with quality control and doublet detection results.
 - s4d8_normalization.h5ad: AnnData file after applying normalization methods.
 - s4d8_feature_selection.h5ad: AnnData file after feature selection with highly deviant genes.
-- figures/: Directory containing .png files that visualize key steps of the analysis:
-- total_counts_log1p_norm.png: Histogram of total counts and shifted log1p normalization.- 
-- scran_normalization.png: Histogram of log1p with Scran estimated size factors.
-- analytic_pearson_residuals.png: Histogram of analytic Pearson residuals.
-- dispersion_vs_mean_highly_deviant.png: Dispersion vs mean plot for highly deviant genes.
+- s4d8_clustered.h5ad: AnnData file with clustering information based on UMAP and Leiden resolutions.
+- annotation_adata_out.h5ad: Final annotated AnnData file, including manual and automated cell-type annotations.
+- figures/: Directory containing .png files that visualize key steps of the analysis.
+
